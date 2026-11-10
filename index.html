@@ -374,6 +374,30 @@
   .color-empty a{color:var(--red);font-weight:800}
 </style>
 <noscript><style>.avail{pointer-events:auto}.intro{display:none}</style></noscript>
+<style id="art-shop-button-style">
+/* JP Han refinement: quiet neon edge tracing on the single Art Shop CTA. */
+.art-shop-cta{
+ position:relative;isolation:isolate;overflow:hidden;
+ background:transparent!important;color:#f8f5f0!important;
+ border:1px solid rgba(255,255,255,.28);
+ box-shadow:0 0 0 1px rgba(255,255,255,.05) inset;
+ transition:transform .2s ease,box-shadow .2s ease;
+}
+.art-shop-cta::before{
+ content:"";position:absolute;inset:-2px;z-index:-2;border-radius:inherit;
+ background:conic-gradient(from 0deg,transparent 0deg,transparent 265deg,#ff315b 296deg,#c45aff 312deg,#28e7ed 330deg,transparent 350deg);
+ animation:jp-neon-trace 5.5s linear infinite;
+}
+.art-shop-cta::after{
+ content:"";position:absolute;inset:2px;border-radius:inherit;
+ background:#141414;z-index:-1;
+}
+.art-shop-cta:hover,.art-shop-cta:focus-visible{
+ transform:translateY(-2px);opacity:1;box-shadow:0 0 16px rgba(226,58,95,.36),0 0 25px rgba(40,231,237,.12);
+}
+@keyframes jp-neon-trace{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.art-shop-cta::before{animation:none}}
+</style>
 </head>
 <body>
 
@@ -443,6 +467,7 @@
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://calendly.com/jphantattoo/hanscript" target="_blank" rel="noopener" data-book-btn>Book on Calendly</a>
           <a class="btn btn-ghost" href="https://www.instagram.com/jphantattoo/" target="_blank" rel="noopener">Instagram @jphantattoo</a>
+          <a class="nav-cta art-shop-cta" href="https://shop.jphantattoo.com/">ART SHOP →</a>
         </div>
         <div class="hero-meta">
           <span><span class="dot"></span> Now booking — weekends</span>
