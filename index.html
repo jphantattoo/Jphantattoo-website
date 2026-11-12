@@ -417,10 +417,9 @@
     function enter() {
       if (leaving) return;
       leaving = true;
-      const offset = Math.max(0, audio.currentTime - .42);
       audio.pause();
-      document.documentElement.dataset.introOffset = String(offset);
-      document.dispatchEvent(new CustomEvent('jp:enter', {detail:{offset}}));
+      document.documentElement.dataset.introEntered = 'true';
+      document.dispatchEvent(new Event('jp:enter'));
       intro.classList.add('fadeout');
       setTimeout(() => {
         intro.classList.add('gone');
@@ -472,7 +471,7 @@
     </div>
   </div>
 </header>
-<script src="/music-player.js"></script>
+<script src="/music-player.js?v=separate-intro"></script>
 
 <main id="top">
   <!-- Hero -->

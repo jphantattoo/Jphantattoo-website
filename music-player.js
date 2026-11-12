@@ -20,15 +20,11 @@
     });
   }
 
-  function select(index, play, offset = 0) {
+  function select(index, play) {
     if (!tracks.length) return;
     active = (index + tracks.length) % tracks.length;
     if (audio.getAttribute('src') !== tracks[active].url) audio.src = tracks[active].url;
-    if (offset > 0) {
-      try { audio.currentTime = offset; } catch {}
-    } else if (audio.currentTime) {
-      audio.currentTime = 0;
-    }
+    if (audio.currentTime) audio.currentTime = 0;
     if (play) audio.play().catch(render);
     render();
   }
@@ -63,16 +59,15 @@
     }
   });
 
-  function enter(offset) {
+  function enter() {
+    if (entered) return;
     entered = true;
-    select(active, true, tracks[active]?.url === '/hanscript-demo.mp3' ? offset : 0);
+    select(0, true);
   }
-  document.addEventListener('jp:enter', event => enter(event.detail.offset), {once:true});
+  document.addEventListener('jp:enter', enter, {once:true});
   renderList();
   select(0, false);
-  if (document.documentElement.dataset.introOffset !== undefined) {
-    enter(Number(document.documentElement.dataset.introOffset));
-  }
+  if (document.documentElement.dataset.introEntered === 'true') enter();
 
   fetch('/sarkar-homepage.json', {cache:'no-cache'})
     .then(result => result.ok ? result.json() : null)
