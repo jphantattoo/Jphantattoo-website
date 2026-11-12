@@ -259,6 +259,7 @@
      the visitor clicks it to enter the site. */
   body.intro-lock{overflow:hidden}
   .intro{position:fixed;inset:0;z-index:100;background:#000;display:flex;align-items:center;justify-content:center}
+  .intro:not(.ready) .intro-seal,.intro:not(.ready) .intro-halo,.intro:not(.ready) .intro-prompt{visibility:hidden}
   .intro.ready{animation:intro-shake .38s ease-out .42s 1}
   .intro.gone{display:none}
   .intro.fadeout{opacity:0;transition:opacity .3s ease}
@@ -406,37 +407,31 @@
   (function(){
     const intro = document.getElementById('intro');
     const audio = intro.querySelector('audio');
-    const prompt = intro.querySelector('.intro-prompt');
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     let leaving = false;
-    let attemptedByTap = false;
     let introPlaying = false;
 
     document.body.classList.add('intro-lock');
 
-    function stamp() {
-      intro.classList.remove('ready');
-      void intro.offsetWidth;
-      intro.classList.add('ready');
+    function skipIntro() {
+      if (leaving || introPlaying) return;
+      leaving = true;
+      clearTimeout(startDeadline);
+      audio.pause();
+      intro.classList.add('gone');
+      document.body.classList.remove('intro-lock');
     }
 
-    function showPrompt(label) {
-      prompt.textContent = label;
-      intro.setAttribute('aria-label', 'HanScript intro — ' + label.toLowerCase());
-    }
-
-    const visualFallback = setTimeout(stamp, 600);
+    // Only show the stamp once audible media playback has started.
+    const startDeadline = setTimeout(skipIntro, 900);
     audio.addEventListener('playing', () => {
-      clearTimeout(visualFallback);
-      if (!introPlaying) stamp();
+      if (leaving || introPlaying) return;
+      clearTimeout(startDeadline);
       introPlaying = true;
-      showPrompt('Tap to enter');
+      intro.classList.add('ready');
     });
-
-    audio.play().catch(error => {
-      if (leaving || introPlaying || attemptedByTap) return;
-      if (error.name === 'NotAllowedError') showPrompt('Tap to hear intro');
-    });
+    audio.addEventListener('error', skipIntro);
+    audio.play().catch(skipIntro);
 
     function exitImpact() {
       const AudioEngine = window.AudioContext || window.webkitAudioContext;
@@ -463,19 +458,11 @@
 
     function enter() {
       if (leaving) return;
-      if (!introPlaying && !attemptedByTap && !audio.error) {
-        attemptedByTap = true;
-        if (audio.paused) audio.currentTime = 0;
-        audio.play().catch(openPage);
+      if (!introPlaying) {
+        skipIntro();
         return;
       }
-      openPage();
-    }
-
-    function openPage() {
-      if (leaving) return;
       leaving = true;
-      clearTimeout(visualFallback);
       audio.pause();
       exitImpact();
       document.documentElement.dataset.introEntered = 'true';
