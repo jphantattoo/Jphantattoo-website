@@ -4,7 +4,7 @@
   const toggle = panel.querySelector('[data-toggle]');
   const title = panel.querySelector('.music-title');
   const list = panel.querySelector('.music-tracks');
-  const tracks = [{title:'HanScript Demo', url:'/hanscript-demo.mp3'}];
+  const tracks = [{"title": "HanScript 01", "url": "/sarkar-track-0b47c923-53aa-5e66-8e0f-b6f2e2edecc2.mp3"}, {"title": "HanScript 02", "url": "/sarkar-track-5e82e7ca-4fd7-506d-a360-81dd9c949e30.mp3"}];
   let active = 0;
   let entered = false;
 

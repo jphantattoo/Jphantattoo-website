@@ -406,18 +406,78 @@
   (function(){
     const intro = document.getElementById('intro');
     const audio = intro.querySelector('audio');
+    const prompt = intro.querySelector('.intro-prompt');
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     let leaving = false;
+    let attemptedByTap = false;
+    let introPlaying = false;
 
     document.body.classList.add('intro-lock');
-    intro.classList.add('ready');
-    // Browsers may decline audible autoplay until the visitor interacts.
-    audio.play().catch(() => {});
+
+    function stamp() {
+      intro.classList.remove('ready');
+      void intro.offsetWidth;
+      intro.classList.add('ready');
+    }
+
+    function showPrompt(label) {
+      prompt.textContent = label;
+      intro.setAttribute('aria-label', 'HanScript intro — ' + label.toLowerCase());
+    }
+
+    const visualFallback = setTimeout(stamp, 600);
+    audio.addEventListener('playing', () => {
+      clearTimeout(visualFallback);
+      if (!introPlaying) stamp();
+      introPlaying = true;
+      showPrompt('Tap to enter');
+    });
+
+    audio.play().catch(error => {
+      if (leaving || introPlaying || attemptedByTap) return;
+      if (error.name === 'NotAllowedError') showPrompt('Tap to hear intro');
+    });
+
+    function exitImpact() {
+      const AudioEngine = window.AudioContext || window.webkitAudioContext;
+      if (!AudioEngine) return;
+      try {
+        const context = new AudioEngine();
+        context.resume().then(() => {
+          const now = context.currentTime;
+          const envelope = context.createGain();
+          envelope.gain.setValueAtTime(.001, now);
+          envelope.gain.exponentialRampToValueAtTime(.82, now + .012);
+          envelope.gain.exponentialRampToValueAtTime(.001, now + .58);
+          envelope.connect(context.destination);
+          const bass = context.createOscillator();
+          bass.frequency.setValueAtTime(150, now);
+          bass.frequency.exponentialRampToValueAtTime(38, now + .17);
+          bass.connect(envelope);
+          bass.start(now);
+          bass.stop(now + .59);
+          bass.onended = () => { void context.close(); };
+        }).catch(() => { void context.close(); });
+      } catch {}
+    }
 
     function enter() {
       if (leaving) return;
+      if (!introPlaying && !attemptedByTap && !audio.error) {
+        attemptedByTap = true;
+        if (audio.paused) audio.currentTime = 0;
+        audio.play().catch(openPage);
+        return;
+      }
+      openPage();
+    }
+
+    function openPage() {
+      if (leaving) return;
       leaving = true;
+      clearTimeout(visualFallback);
       audio.pause();
+      exitImpact();
       document.documentElement.dataset.introEntered = 'true';
       document.dispatchEvent(new Event('jp:enter'));
       intro.classList.add('fadeout');
@@ -431,7 +491,7 @@
     intro.addEventListener('keydown', event => {
       if (event.key !== 'Enter' && event.key !== ' ') return;
       event.preventDefault();
-      enter();
+      if (!event.repeat) enter();
     });
   })();
 </script>
@@ -463,7 +523,7 @@
           <button type="button" data-toggle aria-label="Play music">▶</button>
           <button type="button" data-next aria-label="Next track">›</button>
         </div>
-        <span class="music-title" aria-live="polite">HanScript Demo</span>
+        <span class="music-title" aria-live="polite">HanScript 01</span>
         <details><summary aria-label="Playlist">List</summary><ol class="music-tracks"></ol></details>
         <audio preload="metadata"></audio>
       </div>
@@ -471,7 +531,7 @@
     </div>
   </div>
 </header>
-<script src="/music-player.js?v=separate-intro"></script>
+<script src="/music-player.js?v=exit-impact"></script>
 
 <main id="top">
   <!-- Hero -->
