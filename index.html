@@ -378,6 +378,21 @@
 @keyframes jp-neon-trace{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.art-shop-cta::before{animation:none}}
 </style>
+<style>
+  .header-actions{display:flex;align-items:center;gap:8px;min-width:0}
+  .site-music{display:flex;align-items:center;gap:5px;min-width:0;padding:2px 6px;border:1px solid var(--line);border-radius:999px;position:relative;font-size:.72rem;white-space:nowrap}
+  .music-controls{display:flex;flex:none;align-items:center}
+  .site-music button,.site-music summary{border:0;background:none;color:inherit;cursor:pointer;font:inherit;padding:6px}
+  .music-controls button{min-width:26px;font-size:.86rem}
+  .music-title{overflow:hidden;text-overflow:ellipsis;max-width:115px}
+  .site-music summary{list-style:none}.site-music summary::-webkit-details-marker{display:none}
+  .music-tracks{position:absolute;right:0;top:100%;list-style:none;margin:7px 0 0;padding:6px;background:var(--bg);border:1px solid var(--line);border-radius:10px;min-width:155px;max-width:calc(100vw - 32px);max-height:45dvh;overflow:auto;box-shadow:0 12px 30px #0003}
+  .music-tracks button{width:100%;text-align:left;white-space:normal}
+  .music-tracks button[aria-current=true]{font-weight:800;color:var(--stamp,#b0282c)}
+  @media(max-width:990px){.nav-inner .nav-links{gap:13px}.music-title{display:none}}
+  @media(max-width:720px){.header-actions{gap:5px}.site-music{padding-inline:3px;gap:0}.music-controls button{min-width:24px}}
+  @media(max-width:410px){.nav-inner{gap:6px}.nav-inner .brand{gap:5px;min-width:0;font-size:.74rem}.nav-inner .brand img{width:30px;height:30px}.header-actions .art-shop-cta{padding-inline:8px;font-size:.68rem}.site-music button,.site-music summary{padding-inline:4px}}
+</style>
 </head>
 <body>
 
@@ -402,7 +417,10 @@
     function enter() {
       if (leaving) return;
       leaving = true;
+      const offset = Math.max(0, audio.currentTime - .42);
       audio.pause();
+      document.documentElement.dataset.introOffset = String(offset);
+      document.dispatchEvent(new CustomEvent('jp:enter', {detail:{offset}}));
       intro.classList.add('fadeout');
       setTimeout(() => {
         intro.classList.add('gone');
@@ -439,9 +457,22 @@
       <a href="#sessions">Sessions</a>
       <a href="#book" data-book-btn>Booking</a>
     </nav>
-    <a class="nav-cta art-shop-cta" href="https://shop.jphantattoo.com/">ART SHOP →</a>
+    <div class="header-actions">
+      <div class="site-music" aria-label="Music player">
+        <div class="music-controls">
+          <button type="button" data-previous aria-label="Previous track">‹</button>
+          <button type="button" data-toggle aria-label="Play music">▶</button>
+          <button type="button" data-next aria-label="Next track">›</button>
+        </div>
+        <span class="music-title" aria-live="polite">HanScript Demo</span>
+        <details><summary aria-label="Playlist">List</summary><ol class="music-tracks"></ol></details>
+        <audio preload="metadata"></audio>
+      </div>
+      <a class="nav-cta art-shop-cta" href="https://shop.jphantattoo.com/">ART SHOP →</a>
+    </div>
   </div>
 </header>
+<script src="/music-player.js"></script>
 
 <main id="top">
   <!-- Hero -->
