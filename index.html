@@ -409,29 +409,28 @@
     const audio = intro.querySelector('audio');
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     let leaving = false;
-    let introPlaying = false;
+    let stampShown = false;
 
     document.body.classList.add('intro-lock');
 
-    function skipIntro() {
-      if (leaving || introPlaying) return;
-      leaving = true;
+    function showStamp() {
+      if (leaving || stampShown) return;
+      stampShown = true;
       clearTimeout(startDeadline);
-      audio.pause();
-      intro.classList.add('gone');
-      document.body.classList.remove('intro-lock');
+      intro.classList.add('ready');
     }
 
-    // Only show the stamp once audible media playback has started.
-    const startDeadline = setTimeout(skipIntro, 900);
-    audio.addEventListener('playing', () => {
-      if (leaving || introPlaying) return;
-      clearTimeout(startDeadline);
-      introPlaying = true;
-      intro.classList.add('ready');
-    });
-    audio.addEventListener('error', skipIntro);
-    audio.play().catch(skipIntro);
+    function showSilentStamp() {
+      if (leaving || stampShown) return;
+      audio.pause();
+      showStamp();
+    }
+
+    // Start the stamp with playback, or show it silently when audio is blocked.
+    const startDeadline = setTimeout(showSilentStamp, 900);
+    audio.addEventListener('playing', showStamp, {once:true});
+    audio.addEventListener('error', showSilentStamp, {once:true});
+    audio.play().catch(showSilentStamp);
 
     function exitImpact() {
       const AudioEngine = window.AudioContext || window.webkitAudioContext;
@@ -458,11 +457,8 @@
 
     function enter() {
       if (leaving) return;
-      if (!introPlaying) {
-        skipIntro();
-        return;
-      }
       leaving = true;
+      clearTimeout(startDeadline);
       audio.pause();
       exitImpact();
       document.documentElement.dataset.introEntered = 'true';
