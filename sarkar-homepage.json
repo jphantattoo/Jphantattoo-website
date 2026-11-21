@@ -1,8 +1,8 @@
 {
-  "intro": "Custom tattoo work in Los Angeles, built on nearly 20 years of experience. JP Han is the creator of HanScript — a new cyber sigilism based on Hangul, turning Korean letterforms into modern day energy marks. [Sarkar temporary verification]",
+  "intro": "Custom tattoo work in Los Angeles, built on nearly 20 years of experience. JP Han is the creator of HanScript — a new cyber sigilism based on Hangul, turning Korean letterforms into modern day energy marks.",
   "about": "JP Han is a Los Angeles–based tattoo artist working under the name JP.HAN TATTOO. Every piece starts as a conversation — your story, the placement, and the boundaries of the design — before it ever becomes a stencil.",
   "hanscript": "Most cyber sigilism is built on Sanskrit. HanScript is built on Hangul — Korean letterforms broken down, sharpened, and rebuilt into sigils that carry the energy of a word, a name, or an intention.",
-  "booking": "https://calendly.com/jphantattoo/hanscript/",
+  "booking": "https://calendly.com/jphantattoo/hanscript",
   "playlist": [
     {
       "title": "HanScript Demo",
@@ -10,14 +10,14 @@
       "url": "/hanscript-demo.mp3"
     },
     {
-      "title": "HanScript 02",
-      "artist": "",
-      "url": "/sarkar-track-5e82e7ca-4fd7-506d-a360-81dd9c949e30.mp3"
-    },
-    {
       "title": "HanScript 01",
       "artist": "",
       "url": "/sarkar-track-0b47c923-53aa-5e66-8e0f-b6f2e2edecc2.mp3"
+    },
+    {
+      "title": "HanScript 02",
+      "artist": "",
+      "url": "/sarkar-track-5e82e7ca-4fd7-506d-a360-81dd9c949e30.mp3"
     }
   ],
   "photos": [],
@@ -209,7 +209,7 @@
     "bookingLabel": "Book on Calendly"
   },
   "_sarkar": {
-    "revision": "aa3d839f-72c6-4d88-bc70-f44d92ee0883",
-    "publishedAt": "2026-11-21T17:20:39.097Z"
+    "revision": "9dabd853-3f88-42fb-9203-bd78dcdafb82",
+    "publishedAt": "2026-11-21T17:22:11.900Z"
   }
 }
