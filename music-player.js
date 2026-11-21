@@ -9,7 +9,7 @@
   let entered = false;
 
   function render() {
-    title.textContent = tracks[active]?.title || 'No tracks';
+    title.textContent = tracks[active] ? [tracks[active].title, tracks[active].artist].filter(Boolean).join(' · ') : 'No tracks';
     toggle.textContent = audio.paused ? '▶' : 'Ⅱ';
     toggle.setAttribute('aria-label', audio.paused ? 'Play music' : 'Pause music');
     list.querySelectorAll('button').forEach((button, index) => {
@@ -34,7 +34,7 @@
       const item = document.createElement('li');
       const button = document.createElement('button');
       button.type = 'button';
-      button.textContent = title;
+      button.textContent = [title, tracks[index].artist].filter(Boolean).join(' · ');
       button.addEventListener('click', () => select(index, true));
       item.append(button);
       return item;
@@ -78,7 +78,7 @@
         /^\/(?:hanscript-demo\.mp3|sarkar-track-[a-f0-9-]+\.mp3)$/.test(track?.url));
       const wasPlaying = !audio.paused;
       tracks.splice(0, tracks.length, ...replacement);
-      active = entered ? Math.max(0, tracks.findIndex(track => track.url === previousUrl)) : 0;
+      active = entered ? Math.max(0, tracks.findIndex(track => track.url === previousUrl)) : Math.max(0, tracks.findIndex(track => track.url === config.defaultTrack));
       if (!tracks.length || tracks[active].url !== previousUrl) {
         audio.pause();
         audio.removeAttribute('src');

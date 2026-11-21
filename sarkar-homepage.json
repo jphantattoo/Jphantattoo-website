@@ -1,21 +1,236 @@
 {
-  "intro": "Custom tattoo work in Los Angeles, built on nearly 20 years of experience. JP Han is the creator of HanScript — a new cyber sigilism based on Hangul, turning Korean letterforms into modern day energy marks.",
+  "intro": "Custom tattoo work in Los Angeles, built on nearly 20 years of experience. JP Han is the creator of HanScript — a new cyber sigilism based on Hangul, turning Korean letterforms into modern day energy marks. [Sarkar temporary verification]",
   "about": "JP Han is a Los Angeles–based tattoo artist working under the name JP.HAN TATTOO. Every piece starts as a conversation — your story, the placement, and the boundaries of the design — before it ever becomes a stencil.",
   "hanscript": "Most cyber sigilism is built on Sanskrit. HanScript is built on Hangul — Korean letterforms broken down, sharpened, and rebuilt into sigils that carry the energy of a word, a name, or an intention.",
-  "booking": "https://calendly.com/jphantattoo/hanscript",
-  "photos": [],
+  "booking": "https://calendly.com/jphantattoo/hanscript/",
   "playlist": [
     {
       "title": "HanScript Demo",
+      "artist": "",
       "url": "/hanscript-demo.mp3"
     },
     {
       "title": "HanScript 01",
+      "artist": "",
       "url": "/sarkar-track-0b47c923-53aa-5e66-8e0f-b6f2e2edecc2.mp3"
     },
     {
       "title": "HanScript 02",
+      "artist": "",
       "url": "/sarkar-track-5e82e7ca-4fd7-506d-a360-81dd9c949e30.mp3"
+    },
+    {
+      "title": "sarkar-test-audio",
+      "artist": "",
+      "url": "/sarkar-track-42ad2713-4e00-4f81-90b4-47bfa73d3d72.mp3"
     }
-  ]
+  ],
+  "photos": [],
+  "gallery": [
+    {
+      "id": "original-0",
+      "url": "original:0",
+      "title": "Leg · Thigh to ShinHanScript",
+      "description": "HanScript tattoo covering a full leg from thigh to shin",
+      "visible": true,
+      "group": 0
+    },
+    {
+      "id": "original-1",
+      "url": "original:1",
+      "title": "Forearm · Hand · FingerEngraved Energy",
+      "description": "HanScript fine-line tattoo running down a forearm, over the hand and onto a finger",
+      "visible": true,
+      "group": 1
+    },
+    {
+      "id": "original-2",
+      "url": "original:2",
+      "title": "ForearmHanScript",
+      "description": "HanScript tattoo covering a forearm with lotus and fish motifs",
+      "visible": true,
+      "group": 1
+    },
+    {
+      "id": "original-3",
+      "url": "original:3",
+      "title": "ForearmHanScript",
+      "description": "HanScript fine-line tattoo running along a forearm",
+      "visible": true,
+      "group": 1
+    },
+    {
+      "id": "original-4",
+      "url": "original:4",
+      "title": "Wrist · Hand · FingerHanScript",
+      "description": "HanScript tattoo across the wrist and back of the hand, onto the fingers",
+      "visible": true,
+      "group": 1
+    },
+    {
+      "id": "original-5",
+      "url": "original:5",
+      "title": "Back · SpineHanScript",
+      "description": "HanScript full back tattoo running down the spine, with heart and flower motifs",
+      "visible": true,
+      "group": 2
+    },
+    {
+      "id": "original-6",
+      "url": "original:6",
+      "title": "Upper Back · SpineHanScript",
+      "description": "HanScript tattoo across the upper back and down the spine",
+      "visible": true,
+      "group": 2
+    },
+    {
+      "id": "original-7",
+      "url": "original:7",
+      "title": "Shoulder · Upper ArmHanScript",
+      "description": "HanScript tattoo wrapping over the shoulder and upper arm, with a scaled band",
+      "visible": true,
+      "group": 3
+    },
+    {
+      "id": "original-8",
+      "url": "original:8",
+      "title": "Shoulder · ChestHanScript",
+      "description": "HanScript tattoo across the shoulder and chest",
+      "visible": true,
+      "group": 3
+    },
+    {
+      "id": "original-9",
+      "url": "original:9",
+      "title": "Chest · ArmHanScript",
+      "description": "HanScript tattoo in vertical lines across the chest, continuing onto the arm",
+      "visible": true,
+      "group": 3
+    },
+    {
+      "id": "original-10",
+      "url": "original:10",
+      "title": "ForearmDog Portrait",
+      "description": "Black-and-grey dog portrait tattoo on a forearm",
+      "visible": true,
+      "group": 4
+    },
+    {
+      "id": "original-11",
+      "url": "original:11",
+      "title": "ForearmTiger",
+      "description": "Black-and-grey tiger tattoo covering a forearm",
+      "visible": true,
+      "group": 4
+    },
+    {
+      "id": "original-12",
+      "url": "original:12",
+      "title": "ThighButterfly",
+      "description": "Color butterfly tattoo on a thigh",
+      "visible": true,
+      "group": 5
+    },
+    {
+      "id": "original-13",
+      "url": "original:13",
+      "title": "Upper ArmFlowers · Butterfly",
+      "description": "Color tattoo of orange flowers and a butterfly on an upper arm",
+      "visible": true,
+      "group": 5
+    },
+    {
+      "id": "/sarkar-photo-6edb2f98-e91e-411c-9569-08a8511d159f.webp",
+      "url": "/sarkar-photo-6edb2f98-e91e-411c-9569-08a8511d159f.webp",
+      "title": "sarkar-test-photo-2",
+      "description": "",
+      "visible": true,
+      "group": 0
+    },
+    {
+      "id": "/sarkar-photo-19234e9e-6e2d-400c-a640-760a7dcc6962.webp",
+      "url": "/sarkar-photo-19234e9e-6e2d-400c-a640-760a7dcc6962.webp",
+      "title": "Sarkar temporary verification",
+      "description": "Temporary upload and description verification.",
+      "visible": true,
+      "group": 0
+    }
+  ],
+  "introMusic": "/hanscript-intro.mp3",
+  "seo": {
+    "title": "JP Han — JP.HAN TATTOO | Los Angeles",
+    "description": "JP Han — JP.HAN TATTOO. Los Angeles tattoo artist, ~20 years. Creator of HanScript, a new cyber sigilism based on Hangul.",
+    "image": ""
+  },
+  "sections": [
+    {
+      "id": "about",
+      "visible": true,
+      "title": "",
+      "description": ""
+    },
+    {
+      "id": "hanscript",
+      "visible": true,
+      "title": "",
+      "description": ""
+    },
+    {
+      "id": "work",
+      "visible": true,
+      "title": "",
+      "description": ""
+    },
+    {
+      "id": "sessions",
+      "visible": true,
+      "title": "",
+      "description": ""
+    },
+    {
+      "id": "book",
+      "visible": true,
+      "title": "",
+      "description": ""
+    }
+  ],
+  "menu": [
+    {
+      "label": "About",
+      "href": "#about",
+      "visible": true
+    },
+    {
+      "label": "HanScript",
+      "href": "#hanscript",
+      "visible": true
+    },
+    {
+      "label": "Work",
+      "href": "#work",
+      "visible": true
+    },
+    {
+      "label": "Sessions",
+      "href": "#sessions",
+      "visible": true
+    },
+    {
+      "label": "Booking",
+      "href": "#book",
+      "visible": true
+    }
+  ],
+  "links": {
+    "shop": "https://shop.jphantattoo.com/",
+    "hanscript": "https://hanscript.jphantattoo.com/",
+    "instagram": "https://www.instagram.com/jphantattoo/",
+    "contact": "mailto:jphantattoo@gmail.com",
+    "shopLabel": "ART SHOP",
+    "bookingLabel": "Book on Calendly"
+  },
+  "_sarkar": {
+    "revision": "e6eed9ab-7403-43d4-8c40-ae9da15f9688",
+    "publishedAt": "2026-11-21T17:17:08.015Z"
+  }
 }
