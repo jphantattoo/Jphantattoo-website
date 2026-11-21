@@ -10,19 +10,14 @@
       "url": "/hanscript-demo.mp3"
     },
     {
-      "title": "HanScript 01",
-      "artist": "",
-      "url": "/sarkar-track-0b47c923-53aa-5e66-8e0f-b6f2e2edecc2.mp3"
-    },
-    {
       "title": "HanScript 02",
       "artist": "",
       "url": "/sarkar-track-5e82e7ca-4fd7-506d-a360-81dd9c949e30.mp3"
     },
     {
-      "title": "sarkar-test-audio",
+      "title": "HanScript 01",
       "artist": "",
-      "url": "/sarkar-track-42ad2713-4e00-4f81-90b4-47bfa73d3d72.mp3"
+      "url": "/sarkar-track-0b47c923-53aa-5e66-8e0f-b6f2e2edecc2.mp3"
     }
   ],
   "photos": [],
@@ -138,22 +133,6 @@
       "description": "Color tattoo of orange flowers and a butterfly on an upper arm",
       "visible": true,
       "group": 5
-    },
-    {
-      "id": "/sarkar-photo-6edb2f98-e91e-411c-9569-08a8511d159f.webp",
-      "url": "/sarkar-photo-6edb2f98-e91e-411c-9569-08a8511d159f.webp",
-      "title": "sarkar-test-photo-2",
-      "description": "",
-      "visible": true,
-      "group": 0
-    },
-    {
-      "id": "/sarkar-photo-19234e9e-6e2d-400c-a640-760a7dcc6962.webp",
-      "url": "/sarkar-photo-19234e9e-6e2d-400c-a640-760a7dcc6962.webp",
-      "title": "Sarkar temporary verification",
-      "description": "Temporary upload and description verification.",
-      "visible": true,
-      "group": 0
     }
   ],
   "introMusic": "/hanscript-intro.mp3",
@@ -230,7 +209,7 @@
     "bookingLabel": "Book on Calendly"
   },
   "_sarkar": {
-    "revision": "e6eed9ab-7403-43d4-8c40-ae9da15f9688",
-    "publishedAt": "2026-11-21T17:17:08.015Z"
+    "revision": "aa3d839f-72c6-4d88-bc70-f44d92ee0883",
+    "publishedAt": "2026-11-21T17:20:39.097Z"
   }
 }

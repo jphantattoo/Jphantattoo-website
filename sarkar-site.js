@@ -17,7 +17,7 @@
     img.alt=p.description||p.title;img.loading='lazy';
     let caption=el.querySelector('figcaption');if(!caption){caption=document.createElement('figcaption');el.append(caption);}
     if(!unchanged){caption.replaceChildren();const title=document.createElement('span');title.className='placement';title.textContent=p.title;caption.append(title,document.createTextNode(p.description||''));}
-    el.tabIndex=0;el.addEventListener('click',()=>el.classList.toggle('touched'));
+    el.tabIndex=0;if(!source)img.addEventListener('touchstart',()=>el.classList.toggle('touched'),{passive:true});
     (grids[p.group]||grids[0])?.append(el);
    });
    document.querySelectorAll('#work .work-group').forEach(g=>{g.hidden=!g.querySelector('.work-item');});
